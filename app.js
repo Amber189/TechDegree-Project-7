@@ -145,7 +145,7 @@ addPhraseToDisplay(splitPhrase);
 //   let target = event.target;
 //   let btn = target.textContent;
 //
-// //add "chosen" class to button *Note that button elements have an attribute you can set called “disabled” that when set to true will not respond to user clicks
+//
 //   target.classList.add ("chosen");
 //   target.disabled = true;
 //
@@ -171,49 +171,60 @@ addPhraseToDisplay(splitPhrase);
 
 // keys.addEventListener('click', () => {
 
+
+function checkLetter(target){
+  let letter = document.getElementsByClassName("letter");
+let btn = target.textContent.toLowerCase();
+  for (i=0; i < letter.length; i++) {
+    // if button click matches any letter
+
+    if (letter[i].textContent == btn){
+      letter[i].classList.add("show");
+      // let match = letter[i];
+      let letterFound = letter[i];
+      return letterFound;
+    }
+  }
+  return null;
+}
+
 keys.onclick = function (event){
   let target = event.target;
-  let btn = target.textContent;
+
 
 //add "chosen" class to button *Note that button elements have an attribute you can set called “disabled” that when set to true will not respond to user clicks
   target.classList.add ("chosen");
   target.disabled = true;
 
-  function checkLetter(target){
-    let letter = document.getElementsByClassName("letter");
+  checkLetter(target);
+}
 
-    for (i=0; i < letter.length; i++) {
-      // if button click matches any letter
-      let letterContent = letter[i].textContent;
-      if (btn === letterContent){
-        letter[i].classList.add("show");
-        let match = letter[i];
+// function checkLetter(target){
+//   let letter = document.getElementsByClassName("letter");
+//
+//   for (i=0; i < letter.length; i++) {
+//     // if button click matches any letter
+//     let letterContent = letter[i].textContent;
+//     if (btn === letterContent){
+//       letter[i].classList.add("show");
+//       let letterFound = letter[i];
+//
+//       return letterFound;
+//
+//     }else {
+//       return null;
+//     }
+//   }
+// }
 
-        return match;
 
-      }else {
-        return null;
-      }
 
-  // function checkLetter(target){
-  //   let letter = document.getElementsByClassName("letter");
-  //
-  //   for (i=0; i < letter.length; i++) {
-  //     // if button click matches any letter
-  //
-  //     if (letter[i].textContent == btn){
-  //       letter[i].classList.add("show");
-  //       // let match = letter[i];
-  //       let match = btn;
-  //       return match;
-  //     }
-  //        return null;
-  //   }
 
-        // console.log('something is working...');
-      }
-    }
-  }
+
+
+
+
+
 
 //   let letterFound = checkLetter();
 // if (letterFound === null){
