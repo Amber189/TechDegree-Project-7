@@ -174,11 +174,11 @@ addPhraseToDisplay(splitPhrase);
 
 function checkLetter(target){
   let letter = document.getElementsByClassName("letter");
-let btn = target.textContent.toLowerCase();
+let btn = target.textContent;
   for (i=0; i < letter.length; i++) {
     // if button click matches any letter
 
-    if (letter[i].textContent == btn){
+    if (letter[i].textContent.toLowerCase() == btn){
       letter[i].classList.add("show");
       // let match = letter[i];
       let letterFound = letter[i];
