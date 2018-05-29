@@ -169,9 +169,9 @@ addPhraseToDisplay(splitPhrase);
 //
 // checkLetter(target);
 
-keys.addEventListener('click', () => {
+// keys.addEventListener('click', () => {
 
-// keys.onclick = function (event){
+keys.onclick = function (event){
   let target = event.target;
   let btn = target.textContent;
 
@@ -179,41 +179,58 @@ keys.addEventListener('click', () => {
   target.classList.add ("chosen");
   target.disabled = true;
 
-  function checkLetter(btn){
+  function checkLetter(target){
     let letter = document.getElementsByClassName("letter");
 
     for (i=0; i < letter.length; i++) {
       // if button click matches any letter
-
-      if (letter[i].textContent == btn){
+      let letterContent = letter[i].textContent;
+      if (btn === letterContent){
         letter[i].classList.add("show");
-        // let match = letter[i];
+        let match = letter[i];
 
-        return letter[i];
+        return match;
 
       }else {
-        return ("null");
+        return null;
+      }
+
+  // function checkLetter(target){
+  //   let letter = document.getElementsByClassName("letter");
+  //
+  //   for (i=0; i < letter.length; i++) {
+  //     // if button click matches any letter
+  //
+  //     if (letter[i].textContent == btn){
+  //       letter[i].classList.add("show");
+  //       // let match = letter[i];
+  //       let match = btn;
+  //       return match;
+  //     }
+  //        return null;
+  //   }
 
         // console.log('something is working...');
       }
     }
   }
-  let letterFound = checkLetter();
-if (letterFound === "null"){
-  missed = +1;
-}
-function checkWin(){
-  let show = document.getElementsByClassName("show").length;
-  let letterClass = document.getElementsByClassName("letter").length;
 
- if (show === letterClass){
-   document.getElementById('win').style.visibility = "visible";
- } else if (missed <= 5){
-   document.getElementById('lose').style.visibility = "visible";
+//   let letterFound = checkLetter();
+// if (letterFound === null){
+//   missed = +1;
+// }
+// function checkWin(){
+//   let show = document.getElementsByClassName("show").length;
+//   let letterClass = document.getElementsByClassName("letter").length;
+//
+//  if (show === letterClass){
+//    document.getElementById('win').style.visibility = "visible";
+//  } else if (missed <= 5){
+//    document.getElementById('lose').style.visibility = "visible";
+//
+//  }
 
- }
-}
-});
+
 
 
 
