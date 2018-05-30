@@ -171,18 +171,19 @@ addPhraseToDisplay(splitPhrase);
 
 // keys.addEventListener('click', () => {
 
-
+// var letterFound = function (target){
+// let letterFound =
 function checkLetter(target){
   let letter = document.getElementsByClassName("letter");
-let btn = target.textContent;
+  let btn = target.textContent;
   for (i=0; i < letter.length; i++) {
     // if button click matches any letter
 
     if (letter[i].textContent.toLowerCase() == btn){
       letter[i].classList.add("show");
       // let match = letter[i];
-      let letterFound = letter[i];
-      return letterFound;
+      // let letterFound = letter[i];
+      return letter[i];
     }
   }
   return null;
@@ -190,14 +191,32 @@ let btn = target.textContent;
 
 keys.onclick = function (event){
   let target = event.target;
-
+  let letterFound = checkLetter(target);
 
 //add "chosen" class to button *Note that button elements have an attribute you can set called “disabled” that when set to true will not respond to user clicks
   target.classList.add ("chosen");
   target.disabled = true;
 
   checkLetter(target);
-}
+
+
+  if (letterFound === null){
+    missed++;
+  }
+
+  function checkWin(){
+    let show = document.getElementsByClassName("show").length;
+    let letterClass = document.getElementsByClassName("letter").length;
+
+   if (show === letterClass){
+     document.getElementsByClassName('win').style.visibility = "visible";
+   } else if (missed <= 5){
+     document.getElementsByClassName('lose').style.visibility = "visible";
+
+   }
+ }
+ // checkWin();
+};
 
 // function checkLetter(target){
 //   let letter = document.getElementsByClassName("letter");
@@ -226,20 +245,9 @@ keys.onclick = function (event){
 
 
 
-//   let letterFound = checkLetter();
-// if (letterFound === null){
-//   missed = +1;
-// }
-// function checkWin(){
-//   let show = document.getElementsByClassName("show").length;
-//   let letterClass = document.getElementsByClassName("letter").length;
-//
-//  if (show === letterClass){
-//    document.getElementById('win').style.visibility = "visible";
-//  } else if (missed <= 5){
-//    document.getElementById('lose').style.visibility = "visible";
-//
-//  }
+
+
+
 
 
 
