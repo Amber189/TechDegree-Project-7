@@ -167,3 +167,7 @@ button {
 .lose a {
   color: var(--color-lose);
 }
+
+#overlay.hidden {
+  display: none;
+}
