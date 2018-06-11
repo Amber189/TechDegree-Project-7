@@ -3,7 +3,7 @@ const phrase = document.querySelector('#phrase ul');
 let missed = 0;
 const startGame = document.querySelector('a.btn__reset');
 let score = 0
-
+const title = document.querySelector('h2.title');
 
 //hide div "overlay" when "btn__reset" is clicked
 
@@ -24,10 +24,13 @@ overlay.classList.remove('win');
 
 function resetTheGame() {
   // set back to default start state
-
+  startGame.addEventListener('click', () => {
+  console.log(document.getElementById('overlay').classList);
+  // document.getElementById('overlay').style.display = "none";
   overlay.classList.add('start');
+   window.location.reload();
+})
 }
-
 
 
 
@@ -252,7 +255,7 @@ function checkLetter(target){
       health[missed - 1].src = "images/lostHeart.png";
 
     }
-    const overlay = document.getElementById('overlay').classList.remove('hidden');
+    // const overlay = document.getElementById('overlay').classList.remove('hidden');
 
   }
   // return null; this ends loop so nm...
@@ -266,16 +269,23 @@ function checkWin(){
     overlay.classList.add('win');
     score++;
     console.log('score: ', score);
+    resetTheGame()
+    overlay.classList.remove('hidden');
+    overlay.classList.remove('start');
+    overlay.classList.remove('lose');
+    overlay.classList.add('win');
+    startGame.textContent = 'Try again?';
+    title.textContent = 'You got it!';
 
     // document.getElementsByClassName('win').style.visibility = "visible";
   } else if (missed === 5){
-
+    startGame.textContent = 'Try again?';
+    title.textContent = 'Whomp, whomp!';
     resetTheGame()
     overlay.classList.remove('hidden');
     overlay.classList.remove('start');
     overlay.classList.add('lose');
     overlay.classList.remove('win');
-
 
     }
     // function resetTheGame() {
